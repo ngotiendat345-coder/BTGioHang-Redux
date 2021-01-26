@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react'
+import rootReducer from './redux/reducer/RootReducer'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import BTGioHang from './Container/BTGioHang'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    const store = createStore(rootReducer);
+    console.log('render fired');
+    return (
+      <>
+        <Provider store={store}>
+            <BTGioHang/>
+        </Provider>
+      </>
+    );
+  }
 }
 
 export default App;
